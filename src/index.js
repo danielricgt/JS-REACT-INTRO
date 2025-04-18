@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { getHeroeById } from "./bases/08-imp-exp";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// // one promise is created with one argument that is the callback function, this callback receives two arguments, resolve and reject
+// const promesa = new Promise((resolve, reject) => {
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// setTimeout(() => {
+// const heroe = getHeroeById(2);
+// // console.log(heroe)
+// // resolve(heroe);
+// reject('no se pudo encontrar el héroe');
+// }, 2000);
+
+// });
+
+// // in the then method is also a callback function that receives the result of the promise
+// promesa.then((heroe)=>{
+//     console.log(heroe.nombre);
+// }).catch(err => console.warn(err));
+
+const getHeroeByIdAsync = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const heroe = getHeroeById(id);
+      // console.log(heroe)
+      if (heroe) {
+        resolve(heroe);
+      } else {
+        reject("no se pudo encontrar el héroe");
+      }
+    }, 2000);
+  });
+};
+
+getHeroeByIdAsync(2)
+  .then((console.log))
+  .catch(console.warn);
