@@ -1,4 +1,5 @@
-const apiKey = "DzO6Myu63s5cDf7kGRh9SPmLRnNMUu5u";
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
 const httpCall = fetch(
   `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
 );
